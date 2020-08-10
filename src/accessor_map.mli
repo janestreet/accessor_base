@@ -23,9 +23,7 @@ val ati
 (** [found key] is like [at key], but it does not give any control over whether [key]
     exists in the map. It either accesses the data or it doesn't, depending on whether it
     exists. *)
-val found
-  :  'key
-  -> (_, 'data, ('key, 'data, 'cmp) Map.t, [< optional ]) Accessor.Simple.t
+val found : 'key -> (_, 'data, ('key, 'data, 'cmp) Map.t, [< optional ]) Accessor.Simple.t
 
 (** [foundi] is the indexed version of [found]. The index is simply whatever key was
     supplied as an argument. *)

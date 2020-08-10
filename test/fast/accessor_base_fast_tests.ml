@@ -21,9 +21,7 @@ let%expect_test "map isomorphism" =
 
 let%expect_test "map field" =
   let result =
-    test_map
-      (Accessor.field ~get:(fun at -> `get at) ~set:(fun at b -> `set (at, b)))
-      `at
+    test_map (Accessor.field ~get:(fun at -> `get at) ~set:(fun at b -> `set (at, b))) `at
   in
   print_s [%sexp (result : [ `set of [ `at ] * [ `f of [ `get of [ `at ] ] ] ])];
   [%expect {| (set (at (f (get at)))) |}]

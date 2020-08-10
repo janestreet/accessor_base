@@ -25,5 +25,4 @@ val flipped
 
 (** This applicative interface allows you to pass some environment around as you access
     something. *)
-include
-  Accessor.Applicative.S2 with type ('output, 'input) t := 'input -> 'output
+include Accessor.Applicative.S2 with type ('output, 'input) t := 'input -> 'output

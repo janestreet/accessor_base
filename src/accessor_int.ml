@@ -13,8 +13,7 @@ let bit_at_exn i =
   else if i >= Int.num_bits
   then
     raise_s
-      [%message
-        "Accessor.Int.bit_at_exn: index too large" (i : int) (Int.num_bits : int)]
+      [%message "Accessor.Int.bit_at_exn: index too large" (i : int) (Int.num_bits : int)]
   else (
     let mask = 1 lsl i in
     Accessor.field
