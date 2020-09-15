@@ -26,6 +26,23 @@ let each_aux =
 let each = [%accessor each_aux @> Accessor_tuple2.snd]
 let eachi = [%accessor each_aux @> Accessor_tuple2.sndi]
 
+(* [subrange] is not well behaved on its own. It's used to define separate well-behaved
+   accessors [each_in_subrange] and [each_in_subrangei]. *)
+let subrange ~lower_bound ~upper_bound =
+  Accessor.field
+    ~get:(fun t -> Map.subrange t ~lower_bound ~upper_bound)
+    ~set:(fun t subrange ->
+      Map.merge_skewed t subrange ~combine:(fun ~key:_ _prev next -> next))
+;;
+
+let each_in_subrange ~lower_bound ~upper_bound =
+  subrange ~lower_bound ~upper_bound @> each
+;;
+
+let each_in_subrangei ~lower_bound ~upper_bound =
+  subrange ~lower_bound ~upper_bound @> eachi
+;;
+
 let empty_default comparator =
   Accessor_option.default (Map.empty comparator) ~is_default:Map.is_empty
 ;;

@@ -10,15 +10,6 @@ module T = struct
   let each = [%accessor list @> Accessor_list.each]
   let eachi = [%accessor list @> Accessor_list.eachi]
 
-  let split_n i =
-    Accessor.isomorphism
-      ~get:(fun string ->
-        let suffix = String.drop_prefix string i in
-        let prefix = String.drop_prefix string (String.length suffix) in
-        prefix, suffix)
-      ~construct:(fun (prefix, suffix) -> prefix ^ suffix)
-  ;;
-
   let prefixed prefix =
     Accessor.variant
       ~match_:(fun string ->

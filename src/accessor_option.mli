@@ -29,6 +29,6 @@ with type 'a t := 'a Option.t
 val default
   :  'a
   -> is_default:('b -> bool)
-  -> ('i -> 'a -> 'b, 'i -> 'a option -> 'b option, [< isomorphism ]) Accessor.t
+  -> ('i -> 'a -> 'b, 'i -> 'a option -> 'b option, [< isomorphism ]) Accessor.General.t
 
 include Accessor.Monad.S with type 'a t := 'a option

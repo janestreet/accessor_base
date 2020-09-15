@@ -7,39 +7,31 @@ open! Import
     otherwise it accesses [None]. You can use [at key] to determine or control whether
     there is a mapping for [key] at all. For example, [Accessor.set (at key) map None]
     removes any mapping for [key] in [map]. *)
-val at
-  :  'key
-  -> (_, 'data option, ('key, 'data, 'cmp) Map.t, [< field ]) Accessor.Simple.t
+val at : 'key -> (_, 'data option, ('key, 'data, _) Map.t, [< field ]) Accessor.t
 
 (** [ati] is the indexed version of [at]. The index is simply whatever key was supplied as
     an argument. *)
 val ati
   :  'key
-  -> ( 'key * 'i -> 'data option -> 'data option
-     , 'i -> ('key, 'data, 'cmp) Map.t -> ('key, 'data, 'cmp) Map.t
-     , [< field ] )
-       Accessor.t
+  -> ('key * _, 'data option, ('key, 'data, _) Map.t, [< field ]) Accessor.Indexed.t
 
 (** [found key] is like [at key], but it does not give any control over whether [key]
     exists in the map. It either accesses the data or it doesn't, depending on whether it
     exists. *)
-val found : 'key -> (_, 'data, ('key, 'data, 'cmp) Map.t, [< optional ]) Accessor.Simple.t
+val found : 'key -> (_, 'data, ('key, 'data, _) Map.t, [< optional ]) Accessor.t
 
 (** [foundi] is the indexed version of [found]. The index is simply whatever key was
     supplied as an argument. *)
 val foundi
   :  'key
-  -> ( 'key * 'i -> 'data -> 'data
-     , 'i -> ('key, 'data, 'cmp) Map.t -> ('key, 'data, 'cmp) Map.t
-     , [< optional ] )
-       Accessor.t
+  -> ('key * _, 'data, ('key, 'data, _) Map.t, [< optional ]) Accessor.Indexed.t
 
 (** [each] accesses each datum in the map. *)
 val each
   : ( 'i -> 'a -> 'b
     , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
     , [< many ] )
-      Accessor.t
+      Accessor.General.t
 
 (** [eachi] is the indexed version of [each]. The indices are the keys that map to the
     data being accessed. *)
@@ -47,7 +39,19 @@ val eachi
   : ( 'k * 'i -> 'a -> 'b
     , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
     , [< many ] )
-      Accessor.t
+      Accessor.General.t
+
+(** Like [each], but only accesses data within the specified subrange of keys. *)
+val each_in_subrange
+  :  lower_bound:'k Maybe_bound.t
+  -> upper_bound:'k Maybe_bound.t
+  -> (_, 'a, ('k, 'a, _) Map.t, [< many ]) Accessor.t
+
+(** Like [eachi], but only accesses data within the specified subrange of keys. *)
+val each_in_subrangei
+  :  lower_bound:'k Maybe_bound.t
+  -> upper_bound:'k Maybe_bound.t
+  -> ('k * _, 'a, ('k, 'a, _) Map.t, [< many ]) Accessor.Indexed.t
 
 (** [empty_default (module M)] is an isomorphism between [Map.t option] and [Map.t],
     treating [None] identically with [Map.empty (module M)]. Note that this isn't
@@ -63,13 +67,13 @@ val empty_default
   -> ( 'i -> ('k1, 'a, 'cmp1) Map.t -> ('k2, 'b, 'cmp2) Map.t
      , 'i -> ('k1, 'a, 'cmp1) Map.t option -> ('k2, 'b, 'cmp2) Map.t option
      , [< isomorphism ] )
-       Accessor.t
+       Accessor.General.t
 
 (** [of_accessor (module M) accessor x ~key_of_index] is a [M.Map.t] created by traversing
     [x] with [accessor], mapping each index to the data being accessed. *)
 val of_accessor
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> [ `Duplicate_key of 'k | `Ok of ('k, 'a, 'cmp) Map.t ]
@@ -77,7 +81,7 @@ val of_accessor
 (** Raising version of [of_accessor]. *)
 val of_accessor_exn
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> ('k, 'a, 'cmp) Map.t
@@ -85,7 +89,7 @@ val of_accessor_exn
 (** [Or_error] version of [of_accessor]. *)
 val of_accessor_or_error
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> ('k, 'a, 'cmp) Map.t Or_error.t
@@ -94,7 +98,7 @@ val of_accessor_or_error
     a function. *)
 val of_accessor_fold
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> init:'acc
@@ -105,7 +109,7 @@ val of_accessor_fold
     list. *)
 val of_accessor_multi
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> ('k, 'a list, 'cmp) Map.t
@@ -114,7 +118,7 @@ val of_accessor_multi
     function. *)
 val of_accessor_reduce
   :  ('k, 'cmp) Map.comparator
-  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.t
+  -> ('i -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> key_of_index:('i Accessor.Index.t -> 'k)
   -> f:('a -> 'a -> 'a)

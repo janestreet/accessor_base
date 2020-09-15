@@ -6,22 +6,24 @@ val negated
   : ( 'i -> ('a -> bool) -> 'b -> bool
     , 'i -> ('a -> bool) -> 'b -> bool
     , [< isomorphism ] )
-      Accessor.t
+      Accessor.General.t
 
 (** You can't really extract the result of a function without applying it to something,
     but you can still map over it. *)
-val result : ('i -> 'a -> 'b, 'i -> ('c -> 'a) -> 'c -> 'b, [< mapper ]) Accessor.t
+val result
+  : ('i -> 'a -> 'b, 'i -> ('c -> 'a) -> 'c -> 'b, [< mapper ]) Accessor.General.t
 
 (** Like [result], but uses whatever argument is supplied to the resulting function as an
     index. *)
-val resulti : ('c * 'i -> 'a -> 'b, 'i -> ('c -> 'a) -> 'c -> 'b, [< mapper ]) Accessor.t
+val resulti
+  : ('c * 'i -> 'a -> 'b, 'i -> ('c -> 'a) -> 'c -> 'b, [< mapper ]) Accessor.General.t
 
 (** Access a function with its arguments flipped. *)
 val flipped
   : ( 'i -> ('a -> 'b -> 'c) -> 'd -> 'e -> 'f
     , 'i -> ('b -> 'a -> 'c) -> 'e -> 'd -> 'f
     , [< isomorphism ] )
-      Accessor.t
+      Accessor.General.t
 
 (** This applicative interface allows you to pass some environment around as you access
     something. *)

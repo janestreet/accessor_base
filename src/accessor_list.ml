@@ -66,7 +66,7 @@ module Tree : sig
 
   val of_list : 'a list -> 'a t
   val to_list : 'a t -> 'a list
-  val each : ('i -> 'a -> 'b, 'i -> 'a t -> 'b t, [< many ]) Accessor.t
+  val each : ('i -> 'a -> 'b, 'i -> 'a t -> 'b t, [< many ]) Accessor.General.t
 end = struct
   module Bounded_length_list : sig
     type 'a t = private 'a list

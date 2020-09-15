@@ -1,4 +1,4 @@
-open! Core_kernel
+open! Core
 open! Import
 
 let test_map accessor at = Accessor.map accessor at ~f:(fun a -> `f a)
