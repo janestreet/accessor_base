@@ -1,3 +1,5 @@
+#+title: Accessor_base
+#+UUID: 380b3134-adae-3f6f-0ed7-ce82f9663bc5
 
 The ~Accessor_base~ library extends ~Accessor~ with convenience functions for
 working with various types in ~Base~.
