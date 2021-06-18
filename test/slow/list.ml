@@ -1,4 +1,4 @@
-open! Core_kernel
+open! Core
 open! Import
 
 let%expect_test "no stack overflow on List.each and List.eachi" =
