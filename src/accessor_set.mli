@@ -29,7 +29,7 @@ val each
 
     [construct (get (Some Foo.Set.empty)) = construct Foo.Set.empty = None] *)
 val empty_default
-  :  ('k1, 'cmp1) Set.comparator
+  :  ('k1, 'cmp1) Comparator.Module.t
   -> ( 'i -> ('k1, 'cmp1) Set.t -> ('k2, 'cmp2) Set.t
      , 'i -> ('k1, 'cmp1) Set.t option -> ('k2, 'cmp2) Set.t option
      , [< isomorphism ] )
@@ -38,7 +38,7 @@ val empty_default
 (** [of_accessor (module M) accessor x] is a [M.Set.t] that contains everything accessed
     by [accessor] in [x]. *)
 val of_accessor
-  :  ('a, 'cmp) Set.comparator
+  :  ('a, 'cmp) Comparator.Module.t
   -> (unit -> 'a -> _, unit -> 'at -> _, [> many_getter ]) Accessor.General.t
   -> 'at
   -> ('a, 'cmp) Set.t
