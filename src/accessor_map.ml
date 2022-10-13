@@ -14,17 +14,46 @@ let at key = ati key @> Accessor.map_index Accessor.Index.tl
 let found key = at key @> Accessor_option.some
 let foundi key = ati key @> Accessor_option.some
 
-(* [each_aux] is not well behaved if you change the keys, but it can be used to write
-   other well behaved accessors. *)
-let each_aux =
-  [%accessor
-    Accessor.field ~get:Map.to_alist ~set:(fun t alist ->
-      Map.of_alist_exn (Map.comparator_s t) alist)
-    @> Accessor_list.each]
+let traverse (type a b) () =
+  let module Map_traversal =
+    Map.Make_applicative_traversals (struct
+      include
+        Applicative.S3_to_S
+          (struct
+            type t = a
+          end)
+          (struct
+            type t = b
+          end)
+          (Accessor.Many)
+
+      let of_thunk f = f ()
+    end)
+  in
+  fun x -> Map_traversal.mapi x ~f:(fun ~key:_ ~data -> Accessor.Many.access data)
 ;;
 
-let each = [%accessor each_aux @> Accessor_tuple2.snd]
-let eachi = [%accessor each_aux @> Accessor_tuple2.sndi]
+let traversei (type k a b) () =
+  let module Map_traversal =
+    Map.Make_applicative_traversals (struct
+      include
+        Applicative.S3_to_S
+          (struct
+            type t = k * a
+          end)
+          (struct
+            type t = b
+          end)
+          (Accessor.Many)
+
+      let of_thunk f = f ()
+    end)
+  in
+  fun x -> Map_traversal.mapi x ~f:(fun ~key ~data -> Accessor.Many.access (key, data))
+;;
+
+let each = [%accessor Accessor.many (traverse ())]
+let eachi = [%accessor Accessor.manyi (traversei ())]
 
 (* [subrange] is not well behaved on its own. It's used to define separate well-behaved
    accessors [each_in_subrange] and [each_in_subrangei]. *)
