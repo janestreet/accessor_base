@@ -103,7 +103,7 @@ end = struct
         | [] -> Done
         | xs ->
           let prefix, suffix = Bounded_length_list.of_list xs in
-          Yield (prefix, suffix))
+          Yield { value = prefix; state = suffix })
       |> Sequence.to_list
     in
     match chunks with
