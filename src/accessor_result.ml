@@ -7,7 +7,7 @@ type ('ok, 'err) t = ('ok, 'err) Result.t =
 [@@deriving accessors]
 
 include Accessor.Of_monad2 (struct
-    include Result
+  include Result
 
-    let apply = `Define_using_bind
-  end)
+  let apply = `Define_using_bind
+end)

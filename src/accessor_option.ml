@@ -15,7 +15,7 @@ let default default ~is_default =
 ;;
 
 include Accessor.Of_monad (struct
-    include Option
+  include Option
 
-    let apply = `Define_using_bind
-  end)
+  let apply = `Define_using_bind
+end)

@@ -44,13 +44,13 @@ let each = [%accessor tuple @> Accessor_tuple2.snd]
 let eachi = [%accessor tuple @> Accessor_tuple2.sndi]
 
 module First = Accessor.Of_monad2 (struct
-    include Either.First
+  include Either.First
 
-    let apply = `Custom apply
-  end)
+  let apply = `Custom apply
+end)
 
 module Second = Accessor.Of_monad2 (struct
-    include Either.Second
+  include Either.Second
 
-    let apply = `Custom apply
-  end)
+  let apply = `Custom apply
+end)

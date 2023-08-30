@@ -31,13 +31,13 @@ let each =
 ;;
 
 module Fst = Accessor.Of_functor2 (struct
-    type ('fst, 'snd) t = 'fst * 'snd
+  type ('fst, 'snd) t = 'fst * 'snd
 
-    let map (a, b) ~f = f a, b
-  end)
+  let map (a, b) ~f = f a, b
+end)
 
 module Snd = Accessor.Of_functor2 (struct
-    type ('snd, 'fst) t = 'fst * 'snd
+  type ('snd, 'fst) t = 'fst * 'snd
 
-    let map (a, b) ~f = a, f b
-  end)
+  let map (a, b) ~f = a, f b
+end)

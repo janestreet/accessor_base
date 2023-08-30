@@ -6,13 +6,13 @@ open! Import
 val mem : 'key -> (_, bool, ('key, _) Set.t, [< field ]) Accessor.t
 
 val at : 'key -> (_, bool, ('key, _) Set.t, [< field ]) Accessor.t
-[@@deprecated "[since 2020-09] Use [mem] instead of [at]"]
+  [@@deprecated "[since 2020-09] Use [mem] instead of [at]"]
 
 (** The indexed version of [mem] adds the given key to the index. *)
 val memi : 'key -> ('key * _, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
 
 val ati : 'key -> ('key * _, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
-[@@deprecated "[since 2020-09] Use [memi] instead of [ati]"]
+  [@@deprecated "[since 2020-09] Use [memi] instead of [ati]"]
 
 (** Access [()] iff the set contains the given key. *)
 val found : 'key -> (_, unit, ('key, _) Set.t, [< optional ]) Accessor.t
@@ -33,7 +33,7 @@ val empty_default
   -> ( 'i -> ('k1, 'cmp1) Set.t -> ('k2, 'cmp2) Set.t
      , 'i -> ('k1, 'cmp1) Set.t option -> ('k2, 'cmp2) Set.t option
      , [< isomorphism ] )
-       Accessor.General.t
+     Accessor.General.t
 
 (** [of_accessor (module M) accessor x] is a [M.Set.t] that contains everything accessed
     by [accessor] in [x]. *)

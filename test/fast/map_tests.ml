@@ -62,7 +62,7 @@ let%test_unit "each_in_subrange" =
     (module Bool_bool_map)
     (module Accessor_test_helpers.Testable.Tuple (Bool_maybe_bound) (Bool_maybe_bound))
     (fun (lower_bound, upper_bound) ->
-       Accessor.Map.each_in_subrange ~lower_bound ~upper_bound)
+      Accessor.Map.each_in_subrange ~lower_bound ~upper_bound)
 ;;
 
 (* [empty_default] is known and documented to not be well behaved. *)

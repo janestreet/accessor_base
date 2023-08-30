@@ -2,12 +2,12 @@ open! Base
 open! Import
 
 include sig
-  type 'a t =
-    | None
-    | Some of 'a
-  [@@deriving accessors]
-end
-with type 'a t := 'a Option.t
+    type 'a t =
+      | None
+      | Some of 'a
+    [@@deriving accessors]
+  end
+  with type 'a t := 'a Option.t
 
 (** [default x ~is_default] is an isomorphism between an [option] and its contents, where
     [None] is considered the same as [default]. [is_default x] is expected to be [true].

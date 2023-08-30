@@ -8,7 +8,7 @@ let%expect_test "many_to_list_field" =
          (Accessor.many_to_list_field
             (Accessor.List.eachi
              @> Accessor.filter_map_index (fun [ i ] ->
-               if when_index i then Some [] else None)))
+                  if when_index i then Some [] else None)))
          ~f:(List.sort ~compare:[%compare: int])
     |> [%sexp_of: int list]
     |> print_s

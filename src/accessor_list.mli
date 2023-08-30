@@ -11,7 +11,7 @@ val cons
   : ( 'i -> 'a * 'a list -> 'b * 'b list
     , 'i -> 'a list -> 'b list
     , [< variant ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** Access an element at a specified position in a list, if the list is long enough to
     have such an element. *)
@@ -22,7 +22,7 @@ val reversed
   : ( 'i -> 'a list -> 'b list
     , 'i -> 'a list -> 'b list
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** [prefixed prefix ~equal] verifies that a list starts with [prefix], accessing the
     suffix left after stripping the prefix if so. *)

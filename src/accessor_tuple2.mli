@@ -22,7 +22,7 @@ val swap
   : ( 'i -> 'a * 'b -> 'c * 'd
     , 'i -> 'b * 'a -> 'd * 'c
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** [assocl] and [assocr] reassociate nested tuples. *)
 
@@ -30,13 +30,13 @@ val assocl
   : ( 'i -> ('a * 'b) * 'c -> ('d * 'e) * 'f
     , 'i -> 'a * ('b * 'c) -> 'd * ('e * 'f)
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 val assocr
   : ( 'i -> 'a * ('b * 'c) -> 'd * ('e * 'f)
     , 'i -> ('a * 'b) * 'c -> ('d * 'e) * 'f
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** Access both components of a tuple. *)
 val each : ('i -> 'a -> 'b, 'i -> 'a * 'a -> 'b * 'b, [< nonempty ]) Accessor.General.t

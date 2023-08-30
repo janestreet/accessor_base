@@ -6,7 +6,7 @@ val negated
   : ( 'i -> ('a -> bool) -> 'b -> bool
     , 'i -> ('a -> bool) -> 'b -> bool
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** You can't really extract the result of a function without applying it to something,
     but you can still map over it. *)
@@ -23,7 +23,7 @@ val flipped
   : ( 'i -> ('a -> 'b -> 'c) -> 'd -> 'e -> 'f
     , 'i -> ('b -> 'a -> 'c) -> 'e -> 'd -> 'f
     , [< isomorphism ] )
-      Accessor.General.t
+    Accessor.General.t
 
 (** This applicative interface allows you to pass some environment around as you access
     something. *)

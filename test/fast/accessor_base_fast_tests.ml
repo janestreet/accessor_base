@@ -81,9 +81,9 @@ let%expect_test "map nonempty" =
     print_s
       [%sexp
         (result
-         : [ `at1 of [ `f of [ `x | `y | `z ] ]
-           | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
-           ])]
+          : [ `at1 of [ `f of [ `x | `y | `z ] ]
+            | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
+            ])]
   in
   run (`at1 `x);
   [%expect {| (at1 (f x)) |}];
@@ -110,10 +110,10 @@ let%expect_test "map many" =
     print_s
       [%sexp
         (result
-         : [ `at0
-           | `at1 of [ `f of [ `x | `y | `z ] ]
-           | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
-           ])]
+          : [ `at0
+            | `at1 of [ `f of [ `x | `y | `z ] ]
+            | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
+            ])]
   in
   run `at0;
   [%expect {| at0 |}];
@@ -136,10 +136,10 @@ let%expect_test "map mapper" =
     print_s
       [%sexp
         (result
-         : [ `at0
-           | `at1 of [ `f of [ `x | `y | `z ] ]
-           | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
-           ])]
+          : [ `at0
+            | `at1 of [ `f of [ `x | `y | `z ] ]
+            | `at2 of [ `f of [ `x | `y | `z ] ] * [ `f of [ `x | `y | `z ] ]
+            ])]
   in
   run `at0;
   [%expect {| at0 |}];

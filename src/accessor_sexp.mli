@@ -2,12 +2,12 @@ open! Base
 open! Import
 
 include sig
-  type t =
-    | Atom of string
-    | List of t list
-  [@@deriving accessors]
-end
-with type t := Sexp.t
+    type t =
+      | Atom of string
+      | List of t list
+    [@@deriving accessors]
+  end
+  with type t := Sexp.t
 
 (** Access the immediate children of a list node. Accesses nothing for atoms. *)
 val children : (_, Sexp.t, Sexp.t, [< many ]) Accessor.t

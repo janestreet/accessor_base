@@ -112,15 +112,15 @@ let of_accessor_reduce comparator accessor at ~key_of_index ~f =
 ;;
 
 include Accessor.Of_applicative_without_return3 (struct
-    type ('data, 'key, 'cmp) t = ('key, 'data, 'cmp) Map.t
+  type ('data, 'key, 'cmp) t = ('key, 'data, 'cmp) Map.t
 
-    let map = Map.map
+  let map = Map.map
 
-    let apply t1 t2 =
-      if Map.length t1 <= Map.length t2
-      then Map.filter_mapi t1 ~f:(fun ~key ~data:f -> Option.map (Map.find t2 key) ~f)
-      else
-        Map.filter_mapi t2 ~f:(fun ~key ~data:x ->
-          Option.map (Map.find t1 key) ~f:(fun f -> f x))
-    ;;
-  end)
+  let apply t1 t2 =
+    if Map.length t1 <= Map.length t2
+    then Map.filter_mapi t1 ~f:(fun ~key ~data:f -> Option.map (Map.find t2 key) ~f)
+    else
+      Map.filter_mapi t2 ~f:(fun ~key ~data:x ->
+        Option.map (Map.find t1 key) ~f:(fun f -> f x))
+  ;;
+end)

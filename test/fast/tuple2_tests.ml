@@ -28,10 +28,10 @@ let%test_unit "swap" =
 let%test_unit "assocl" =
   Accessor_test_helpers.isomorphism
     (module Accessor_test_helpers.Testable.Tuple
-         (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)) (Bool))
+              (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)) (Bool))
     (module Accessor_test_helpers.Testable.Tuple
-         (Bool)
-         (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)))
+              (Bool)
+              (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)))
     (module Unit)
     (fun () -> Accessor.Tuple2.assocl)
 ;;
@@ -39,10 +39,10 @@ let%test_unit "assocl" =
 let%test_unit "assocr" =
   Accessor_test_helpers.isomorphism
     (module Accessor_test_helpers.Testable.Tuple
-         (Bool)
-         (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)))
+              (Bool)
+              (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)))
     (module Accessor_test_helpers.Testable.Tuple
-         (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)) (Bool))
+              (Accessor_test_helpers.Testable.Tuple (Bool) (Bool)) (Bool))
     (module Unit)
     (fun () -> Accessor.Tuple2.assocr)
 ;;
