@@ -1,4 +1,5 @@
-(library (name accessor_base_fast_tests)
- (libraries accessor_base accessor_test_helpers core
-  expect_test_helpers_core)
- (preprocess (pps ppx_jane ppx_accessor)))
+(library
+ (name accessor_base_fast_tests)
+ (libraries accessor_base accessor_test_helpers core expect_test_helpers_core)
+ (preprocess
+  (pps ppx_jane ppx_accessor)))
