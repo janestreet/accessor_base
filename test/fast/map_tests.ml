@@ -82,7 +82,8 @@ let%expect_test "empty_default is not always well behaved" =
           ()
           vs
           (())
-          (Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL))))) |}]
+          (Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL)))))
+    |}]
 ;;
 
 let%test_unit "empty_default is well behaved as long as you don't use [Some Map.empty]" =

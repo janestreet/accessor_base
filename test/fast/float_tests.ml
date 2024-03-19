@@ -20,7 +20,8 @@ let%expect_test "added" =
       (error (
         runtime.ml.E "comparison failed" (
           0 vs -3.950862943457765E-284 (
-            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL))))) |}]
+            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL)))))
+    |}]
 ;;
 
 let%expect_test "subtracted" =
@@ -33,7 +34,8 @@ let%expect_test "subtracted" =
       (error (
         runtime.ml.E "comparison failed" (
           0 vs -3.950862943457765E-284 (
-            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL))))) |}]
+            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL)))))
+    |}]
 ;;
 
 let%expect_test "multiplied" =
@@ -46,7 +48,8 @@ let%expect_test "multiplied" =
       (error (
         runtime.ml.E "comparison failed" (
           -0 vs -1.43279037293961E-322 (
-            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL))))) |}]
+            Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL)))))
+    |}]
 ;;
 
 let%expect_test "divided" =
@@ -61,5 +64,6 @@ let%expect_test "divided" =
           1.96566981591815E-318
           vs
           1.96574886642148E-318
-          (Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL))))) |}]
+          (Loc lib/accessor/test_helpers/accessor_test_helpers.ml:LINE:COL)))))
+    |}]
 ;;
