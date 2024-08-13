@@ -4,9 +4,9 @@ open! Import
 (** Access the inverse of a predicate. *)
 val negated
   : ( 'i -> ('a -> bool) -> 'b -> bool
-    , 'i -> ('a -> bool) -> 'b -> bool
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> ('a -> bool) -> 'b -> bool
+      , [< isomorphism ] )
+      Accessor.General.t
 
 (** You can't really extract the result of a function without applying it to something,
     but you can still map over it. *)
@@ -21,9 +21,9 @@ val resulti
 (** Access a function with its arguments flipped. *)
 val flipped
   : ( 'i -> ('a -> 'b -> 'c) -> 'd -> 'e -> 'f
-    , 'i -> ('b -> 'a -> 'c) -> 'e -> 'd -> 'f
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> ('b -> 'a -> 'c) -> 'e -> 'd -> 'f
+      , [< isomorphism ] )
+      Accessor.General.t
 
 (** This applicative interface allows you to pass some environment around as you access
     something. *)

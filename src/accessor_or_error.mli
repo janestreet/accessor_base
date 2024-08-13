@@ -6,9 +6,9 @@ open! Import
 
 val ok
   : ( 'i -> 'a -> 'b
-    , 'i -> 'a Or_error.t -> 'b Or_error.t
-    , [< variant ] )
-    Accessor.General.t
+      , 'i -> 'a Or_error.t -> 'b Or_error.t
+      , [< variant ] )
+      Accessor.General.t
 
 val error : (_, Error.t, 'a Or_error.t, [< variant ]) Accessor.t
 

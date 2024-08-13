@@ -9,9 +9,9 @@ val nil : (_, unit, 'a list, [< variant ]) Accessor.t
 (** Access the head and tail of a list, if it is nonempty. *)
 val cons
   : ( 'i -> 'a * 'a list -> 'b * 'b list
-    , 'i -> 'a list -> 'b list
-    , [< variant ] )
-    Accessor.General.t
+      , 'i -> 'a list -> 'b list
+      , [< variant ] )
+      Accessor.General.t
 
 (** Access an element at a specified position in a list, if the list is long enough to
     have such an element. *)
@@ -20,9 +20,9 @@ val nth : int -> (_, 'a, 'a list, [< optional ]) Accessor.t
 (** Access a reversed version of a list. *)
 val reversed
   : ( 'i -> 'a list -> 'b list
-    , 'i -> 'a list -> 'b list
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> 'a list -> 'b list
+      , [< isomorphism ] )
+      Accessor.General.t
 
 (** [prefixed prefix ~equal] verifies that a list starts with [prefix], accessing the
     suffix left after stripping the prefix if so. *)

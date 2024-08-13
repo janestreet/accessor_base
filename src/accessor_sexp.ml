@@ -22,7 +22,7 @@ let field name =
   @> tuple2
   @> Accessor_tuple2.sndi
   @> Accessor.filter_map_index (fun (n :: i) ->
-       if Sexp.equal (Atom name) n then Some i else None)
+    if Sexp.equal (Atom name) n then Some i else None)
 ;;
 
 let variant name = list @> Accessor_list.prefixed [ Atom name ] ~equal:Sexp.equal

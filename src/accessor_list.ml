@@ -138,8 +138,8 @@ end = struct
         List.iter
           [ 0; 1; 999; 1_000; 1_001; 999_999; 1_000_000; 1_000_001 ]
           ~f:(fun len ->
-          let xs = List.init len ~f:Fn.id in
-          [%test_eq: int list] (xs |> of_list |> to_list) xs)
+            let xs = List.init len ~f:Fn.id in
+            [%test_eq: int list] (xs |> of_list |> to_list) xs)
       ;;
     end)
   ;;
@@ -159,7 +159,7 @@ let each = [%accessor tree @> Tree.each]
 let eachi = [%accessor with_indices @> each @> Accessor_tuple2.sndi]
 
 include Accessor.Of_monad (struct
-  include List
+    include List
 
-  let apply = `Define_using_bind
-end)
+    let apply = `Define_using_bind
+  end)

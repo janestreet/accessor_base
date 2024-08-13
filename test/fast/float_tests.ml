@@ -11,7 +11,7 @@ let%test_unit "negated" = isomorphism (module Unit) (fun () -> Accessor.Float.ne
    [multiplied], and [divided] are not well behaved in general. *)
 
 let%expect_test "added" =
-  Expect_test_helpers_core.require_does_raise [%here] ~hide_positions:true (fun () ->
+  Expect_test_helpers_core.require_does_raise ~hide_positions:true (fun () ->
     isomorphism (module Float) Accessor.Float.added);
   [%expect
     {|
@@ -25,7 +25,7 @@ let%expect_test "added" =
 ;;
 
 let%expect_test "subtracted" =
-  Expect_test_helpers_core.require_does_raise [%here] ~hide_positions:true (fun () ->
+  Expect_test_helpers_core.require_does_raise ~hide_positions:true (fun () ->
     isomorphism (module Float) Accessor.Float.subtracted);
   [%expect
     {|
@@ -39,7 +39,7 @@ let%expect_test "subtracted" =
 ;;
 
 let%expect_test "multiplied" =
-  Expect_test_helpers_core.require_does_raise [%here] ~hide_positions:true (fun () ->
+  Expect_test_helpers_core.require_does_raise ~hide_positions:true (fun () ->
     isomorphism (module Float) Accessor.Float.multiplied);
   [%expect
     {|
@@ -53,7 +53,7 @@ let%expect_test "multiplied" =
 ;;
 
 let%expect_test "divided" =
-  Expect_test_helpers_core.require_does_raise [%here] ~hide_positions:true (fun () ->
+  Expect_test_helpers_core.require_does_raise ~hide_positions:true (fun () ->
     isomorphism (module Float) Accessor.Float.divided);
   [%expect
     {|

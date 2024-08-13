@@ -29,17 +29,17 @@ val foundi
 (** [each] accesses each datum in the map. *)
 val each
   : ( 'i -> 'a -> 'b
-    , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
-    , [< many ] )
-    Accessor.General.t
+      , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
+      , [< many ] )
+      Accessor.General.t
 
 (** [eachi] is the indexed version of [each]. The indices are the keys that map to the
     data being accessed. *)
 val eachi
   : ( 'k * 'i -> 'a -> 'b
-    , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
-    , [< many ] )
-    Accessor.General.t
+      , 'i -> ('k, 'a, 'cmp) Map.t -> ('k, 'b, 'cmp) Map.t
+      , [< many ] )
+      Accessor.General.t
 
 (** Like [each], but only accesses data within the specified subrange of keys. *)
 val each_in_subrange
@@ -65,9 +65,9 @@ val each_in_subrangei
 val empty_default
   :  ('k1, 'cmp1) Comparator.Module.t
   -> ( 'i -> ('k1, 'a, 'cmp1) Map.t -> ('k2, 'b, 'cmp2) Map.t
-     , 'i -> ('k1, 'a, 'cmp1) Map.t option -> ('k2, 'b, 'cmp2) Map.t option
-     , [< isomorphism ] )
-     Accessor.General.t
+       , 'i -> ('k1, 'a, 'cmp1) Map.t option -> ('k2, 'b, 'cmp2) Map.t option
+       , [< isomorphism ] )
+       Accessor.General.t
 
 (** [of_accessor (module M) accessor x ~key_of_index] is a [M.Map.t] created by traversing
     [x] with [accessor], mapping each index to the data being accessed. *)
@@ -126,4 +126,4 @@ val of_accessor_reduce
 
 include
   Accessor.Applicative_without_return.S3
-    with type ('data, 'key, 'cmp) t := ('key, 'data, 'cmp) Map.t
+  with type ('data, 'key, 'cmp) t := ('key, 'data, 'cmp) Map.t

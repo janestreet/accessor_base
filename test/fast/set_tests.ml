@@ -35,7 +35,7 @@ let%test_unit "found" =
 
 (* [empty_default] is known and documented to not be well behaved. *)
 let%expect_test "empty_default is not always well behaved" =
-  Expect_test_helpers_core.require_does_raise [%here] ~hide_positions:true (fun () ->
+  Expect_test_helpers_core.require_does_raise ~hide_positions:true (fun () ->
     Accessor_test_helpers.isomorphism
       (module Bool_set)
       (module Accessor_test_helpers.Testable.Option (Bool_set))

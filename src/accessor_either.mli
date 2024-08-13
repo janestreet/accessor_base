@@ -12,23 +12,23 @@ include sig
 (** Access an either where the cases are swapped with each other. *)
 val swapped
   : ( 'i -> ('a, 'b) Either.t -> ('c, 'd) Either.t
-    , 'i -> ('b, 'a) Either.t -> ('d, 'c) Either.t
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> ('b, 'a) Either.t -> ('d, 'c) Either.t
+      , [< isomorphism ] )
+      Accessor.General.t
 
 (** [assocl] and [assocr] reassociate nested eithers. *)
 
 val assocl
   : ( 'i -> (('a, 'b) Either.t, 'c) Either.t -> (('d, 'e) Either.t, 'f) Either.t
-    , 'i -> ('a, ('b, 'c) Either.t) Either.t -> ('d, ('e, 'f) Either.t) Either.t
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> ('a, ('b, 'c) Either.t) Either.t -> ('d, ('e, 'f) Either.t) Either.t
+      , [< isomorphism ] )
+      Accessor.General.t
 
 val assocr
   : ( 'i -> ('a, ('b, 'c) Either.t) Either.t -> ('d, ('e, 'f) Either.t) Either.t
-    , 'i -> (('a, 'b) Either.t, 'c) Either.t -> (('d, 'e) Either.t, 'f) Either.t
-    , [< isomorphism ] )
-    Accessor.General.t
+      , 'i -> (('a, 'b) Either.t, 'c) Either.t -> (('d, 'e) Either.t, 'f) Either.t
+      , [< isomorphism ] )
+      Accessor.General.t
 
 module Index : sig
   type t =
@@ -42,16 +42,16 @@ end
 *)
 val each
   : ( 'i -> 'a -> 'b
-    , 'i -> ('a, 'a) Either.t -> ('b, 'b) Either.t
-    , [< field ] )
-    Accessor.General.t
+      , 'i -> ('a, 'a) Either.t -> ('b, 'b) Either.t
+      , [< field ] )
+      Accessor.General.t
 
 (** Like [each], but also provides you with which constructor the value was under. *)
 val eachi
   : ( Index.t * 'i -> 'a -> 'b
-    , 'i -> ('a, 'a) Either.t -> ('b, 'b) Either.t
-    , [< field ] )
-    Accessor.General.t
+      , 'i -> ('a, 'a) Either.t -> ('b, 'b) Either.t
+      , [< field ] )
+      Accessor.General.t
 
 module First : Accessor.Monad.S2 with type ('a, 'b) t := ('a, 'b) Either.t
 module Second : Accessor.Monad.S2 with type ('a, 'b) t := ('b, 'a) Either.t
