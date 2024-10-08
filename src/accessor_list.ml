@@ -132,17 +132,13 @@ end = struct
 
   let each = [%accessor Accessor.many traverse]
 
-  let%test_module "tree" =
-    (module struct
-      let%test_unit "to_list of_list" =
-        List.iter
-          [ 0; 1; 999; 1_000; 1_001; 999_999; 1_000_000; 1_000_001 ]
-          ~f:(fun len ->
-            let xs = List.init len ~f:Fn.id in
-            [%test_eq: int list] (xs |> of_list |> to_list) xs)
-      ;;
-    end)
-  ;;
+  module%test [@name "tree"] _ = struct
+    let%test_unit "to_list of_list" =
+      List.iter [ 0; 1; 999; 1_000; 1_001; 999_999; 1_000_000; 1_000_001 ] ~f:(fun len ->
+        let xs = List.init len ~f:Fn.id in
+        [%test_eq: int list] (xs |> of_list |> to_list) xs)
+    ;;
+  end
 end
 
 let tree = [%accessor Accessor.isomorphism ~get:Tree.of_list ~construct:Tree.to_list]
