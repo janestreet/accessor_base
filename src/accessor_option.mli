@@ -24,7 +24,7 @@ include sig
 
     However, if [is_default b = true], both properties can be violated:
 
-    - [get (construct b) = get None = x]  (violation if [x <> b])
+    - [get (construct b) = get None = x] (violation if [x <> b])
     - [construct (get (Some b)) = construct b = None] *)
 val default
   :  'a
