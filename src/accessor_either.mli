@@ -38,8 +38,7 @@ module Index : sig
 end
 
 (** Access the value stored by the either, regardless of which constructor it lives under.
-    This value is guaranteed to exist, so this accessor is a field instead of a variant.
-*)
+    This value is guaranteed to exist, so this accessor is a field instead of a variant. *)
 val each
   : ( 'i -> 'a -> 'b
       , 'i -> ('a, 'a) Either.t -> ('b, 'b) Either.t

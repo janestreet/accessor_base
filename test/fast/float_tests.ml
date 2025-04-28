@@ -1,6 +1,12 @@
 open! Core
 open! Import
 
+module Float = struct
+  include Float
+
+  let equal x y = Int.equal (compare x y) 0
+end
+
 let isomorphism env accessor =
   Accessor_test_helpers.isomorphism (module Float) (module Float) env accessor
 ;;

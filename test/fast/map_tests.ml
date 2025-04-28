@@ -6,7 +6,7 @@ module Bool_bool_map = struct
   include Accessor_test_helpers.Testable.Bool_map (Bool)
 
   module Nonempty = struct
-    type nonrec t = t [@@deriving compare, quickcheck, sexp_of]
+    type nonrec t = t [@@deriving equal, quickcheck, sexp_of]
 
     let quickcheck_generator =
       Quickcheck.Generator.filter quickcheck_generator ~f:(Fn.non Map.is_empty)
@@ -25,11 +25,11 @@ module Bool_maybe_bound = struct
         | Incl of 'a
         | Excl of 'a
         | Unbounded
-      [@@deriving compare, quickcheck, sexp_of]
+      [@@deriving equal, quickcheck, sexp_of]
     end
   end
 
-  type t = bool Maybe_bound.t [@@deriving compare, quickcheck, sexp_of]
+  type t = bool Maybe_bound.t [@@deriving equal, quickcheck, sexp_of]
 end
 
 let%test_unit "at" =

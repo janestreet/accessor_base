@@ -22,4 +22,9 @@ let bit_at_exn i =
 ;;
 
 let bit_negated = [%accessor Accessor.isomorphism ~get:lnot ~construct:lnot]
-let bit_xored x = Accessor.isomorphism ~get:(Int.bit_xor x) ~construct:(Int.bit_xor x)
+
+let bit_xored x =
+  Accessor.isomorphism
+    ~get:(fun y -> Int.bit_xor x y)
+    ~construct:(fun y -> Int.bit_xor x y)
+;;

@@ -5,7 +5,7 @@ module Bool_set = struct
   include Accessor_test_helpers.Testable.Bool_set
 
   module Nonempty = struct
-    type nonrec t = t [@@deriving compare, quickcheck, sexp_of]
+    type nonrec t = t [@@deriving equal, quickcheck, sexp_of]
 
     let quickcheck_generator =
       Quickcheck.Generator.filter quickcheck_generator ~f:(Fn.non Set.is_empty)

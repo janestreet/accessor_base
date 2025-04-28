@@ -17,15 +17,9 @@ let foundi key = ati key @> Accessor_option.some
 let traverse (type a b) () =
   let module Map_traversal =
     Map.Make_applicative_traversals (struct
-      include
-        Applicative.S3_to_S
-          (struct
-            type t = a
-          end)
-          (struct
-            type t = b
-          end)
-          (Accessor.Many)
+      include Accessor.Many
+
+      type nonrec 'x t = ('x, a, b) t
 
       let of_thunk f = f ()
     end)
@@ -36,15 +30,9 @@ let traverse (type a b) () =
 let traversei (type k a b) () =
   let module Map_traversal =
     Map.Make_applicative_traversals (struct
-      include
-        Applicative.S3_to_S
-          (struct
-            type t = k * a
-          end)
-          (struct
-            type t = b
-          end)
-          (Accessor.Many)
+      include Accessor.Many
+
+      type nonrec 'x t = ('x, k * a, b) t
 
       let of_thunk f = f ()
     end)
