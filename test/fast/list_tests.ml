@@ -3,11 +3,8 @@ open! Import
 module Bool_list = Accessor_test_helpers.Testable.List (Bool)
 
 let%test_unit "nil" =
-  Accessor_test_helpers.variant
-    (module Unit)
-    (module Bool_list)
-    (module Unit)
-    (fun () -> Accessor.List.nil)
+  Accessor_test_helpers.variant (module Unit) (module Bool_list) (module Unit) (fun () ->
+    Accessor.List.nil)
 ;;
 
 let%test_unit "cons" =
@@ -51,11 +48,8 @@ let%test_unit "suffixed" =
 ;;
 
 let%test_unit "each" =
-  Accessor_test_helpers.many
-    (module Bool)
-    (module Bool_list)
-    (module Unit)
-    (fun () -> Accessor.List.each)
+  Accessor_test_helpers.many (module Bool) (module Bool_list) (module Unit) (fun () ->
+    Accessor.List.each)
 ;;
 
 let%expect_test "monadic fold" =

@@ -2,11 +2,8 @@ open! Core
 open! Import
 
 let%test_unit "negated" =
-  Accessor_test_helpers.isomorphism
-    (module Int)
-    (module Int)
-    (module Unit)
-    (fun () -> Accessor.Int.negated)
+  Accessor_test_helpers.isomorphism (module Int) (module Int) (module Unit) (fun () ->
+    Accessor.Int.negated)
 ;;
 
 let%test_unit "added" =
@@ -26,27 +23,18 @@ let%test_unit "substracted" =
 ;;
 
 let%test_unit "incremented" =
-  Accessor_test_helpers.isomorphism
-    (module Int)
-    (module Int)
-    (module Unit)
-    (fun () -> Accessor.Int.incremented)
+  Accessor_test_helpers.isomorphism (module Int) (module Int) (module Unit) (fun () ->
+    Accessor.Int.incremented)
 ;;
 
 let%test_unit "decremented" =
-  Accessor_test_helpers.isomorphism
-    (module Int)
-    (module Int)
-    (module Unit)
-    (fun () -> Accessor.Int.decremented)
+  Accessor_test_helpers.isomorphism (module Int) (module Int) (module Unit) (fun () ->
+    Accessor.Int.decremented)
 ;;
 
 let%test_unit "bit_negated" =
-  Accessor_test_helpers.isomorphism
-    (module Int)
-    (module Int)
-    (module Unit)
-    (fun () -> Accessor.Int.bit_negated)
+  Accessor_test_helpers.isomorphism (module Int) (module Int) (module Unit) (fun () ->
+    Accessor.Int.bit_negated)
 ;;
 
 let%test_unit "bit_xored" =
