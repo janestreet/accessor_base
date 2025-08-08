@@ -13,7 +13,7 @@ val at : 'key -> (_, 'data option, ('key, 'data, _) Map.t, [< field ]) Accessor.
     an argument. *)
 val ati
   :  'key
-  -> ('key * _, 'data option, ('key, 'data, _) Map.t, [< field ]) Accessor.Indexed.t
+  -> ('key * 'i, 'i, 'data option, ('key, 'data, _) Map.t, [< field ]) Accessor.Indexed.t
 
 (** [found key] is like [at key], but it does not give any control over whether [key]
     exists in the map. It either accesses the data or it doesn't, depending on whether it
@@ -24,7 +24,7 @@ val found : 'key -> (_, 'data, ('key, 'data, _) Map.t, [< optional ]) Accessor.t
     supplied as an argument. *)
 val foundi
   :  'key
-  -> ('key * _, 'data, ('key, 'data, _) Map.t, [< optional ]) Accessor.Indexed.t
+  -> ('key * 'i, 'i, 'data, ('key, 'data, _) Map.t, [< optional ]) Accessor.Indexed.t
 
 (** [each] accesses each datum in the map. *)
 val each
@@ -51,7 +51,7 @@ val each_in_subrange
 val each_in_subrangei
   :  lower_bound:'k Maybe_bound.t
   -> upper_bound:'k Maybe_bound.t
-  -> ('k * _, 'a, ('k, 'a, _) Map.t, [< many ]) Accessor.Indexed.t
+  -> ('k * 'i, 'i, 'a, ('k, 'a, _) Map.t, [< many ]) Accessor.Indexed.t
 
 (** [empty_default (module M)] is an isomorphism between [Map.t option] and [Map.t],
     treating [None] identically with [Map.empty (module M)]. Note that this isn't

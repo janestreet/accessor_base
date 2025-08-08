@@ -12,7 +12,7 @@ val each : (_, char, string, [< many ]) Accessor.t
 
 (** The indexed version of [each] adds the numeric index of each character accessed to the
     index. *)
-val eachi : (int * _, char, string, [< many ]) Accessor.Indexed.t
+val eachi : (int * 'i, 'i, char, string, [< many ]) Accessor.Indexed.t
 
 (** Access the suffix of a string that begins with the given prefix, or nothing if the
     string has a different prefix. *)

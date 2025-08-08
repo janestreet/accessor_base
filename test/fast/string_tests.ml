@@ -18,11 +18,8 @@ let%test_unit "reversed" =
 ;;
 
 let%test_unit "each" =
-  Accessor_test_helpers.many
-    (module Char)
-    (module String)
-    (module Unit)
-    (fun () -> Accessor.String.each)
+  Accessor_test_helpers.many (module Char) (module String) (module Unit) (fun () ->
+    Accessor.String.each)
 ;;
 
 let%test_unit "prefixed" =
