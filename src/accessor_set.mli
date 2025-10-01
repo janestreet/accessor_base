@@ -9,16 +9,18 @@ val at : 'key -> (_, bool, ('key, _) Set.t, [< field ]) Accessor.t
 [@@deprecated "[since 2020-09] Use [mem] instead of [at]"]
 
 (** The indexed version of [mem] adds the given key to the index. *)
-val memi : 'key -> ('key * _, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
+val memi : 'key -> ('key * 'i, 'i, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
 
-val ati : 'key -> ('key * _, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
+val ati : 'key -> ('key * 'i, 'i, bool, ('key, _) Set.t, [< field ]) Accessor.Indexed.t
 [@@deprecated "[since 2020-09] Use [memi] instead of [ati]"]
 
 (** Access [()] iff the set contains the given key. *)
 val found : 'key -> (_, unit, ('key, _) Set.t, [< optional ]) Accessor.t
 
 (** The indexed version of [found] adds the given key to the index. *)
-val foundi : 'key -> ('key * _, unit, ('key, _) Set.t, [< optional ]) Accessor.Indexed.t
+val foundi
+  :  'key
+  -> ('key * 'i, 'i, unit, ('key, _) Set.t, [< optional ]) Accessor.Indexed.t
 
 (** Access every element in a set. *)
 val each
