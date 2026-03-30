@@ -6,6 +6,7 @@ bug-reports: "https://github.com/janestreet/accessor_base/issues"
 dev-repo: "git+https://github.com/janestreet/accessor_base.git"
 doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/accessor_base/index.html"
 license: "MIT"
+x-maintenance-intent: ["(latest)"]
 build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]

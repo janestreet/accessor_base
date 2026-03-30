@@ -26,7 +26,7 @@ module Index = struct
   type t =
     | First
     | Second
-  [@@deriving accessors, compare, hash, sexp_of]
+  [@@deriving accessors, compare ~localize, hash, sexp_of]
 end
 
 let tuple =
