@@ -3,4 +3,4 @@
  (public_name accessor_base)
  (libraries accessor base higher_kinded)
  (preprocess
-  (pps ppx_jane ppx_accessor)))
+  (pps ppx_jane -compare-require-explicit-locality ppx_accessor)))

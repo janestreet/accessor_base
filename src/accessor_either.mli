@@ -34,7 +34,7 @@ module Index : sig
   type t =
     | First
     | Second
-  [@@deriving accessors, compare, hash, sexp_of]
+  [@@deriving accessors, compare ~localize, hash, sexp_of]
 end
 
 (** Access the value stored by the either, regardless of which constructor it lives under.
