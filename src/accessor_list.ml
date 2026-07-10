@@ -35,7 +35,9 @@ let cons =
 
 let split_n i =
   Accessor.isomorphism
-    ~get:(fun xs -> List.split_n xs i)
+    ~get:(fun xs ->
+      let a, b = List.split_n xs i in
+      a, b)
     ~construct:(fun (prefix, suffix) -> prefix @ suffix)
 ;;
 
@@ -79,7 +81,11 @@ end = struct
 
     let empty = []
     let max_len = 1_000
-    let of_list xs = List.split_n xs max_len
+
+    let of_list xs =
+      let a, b = List.split_n xs max_len in
+      a, b
+    ;;
 
     let rec traverse xs =
       let open Accessor.Many.Let_syntax in
